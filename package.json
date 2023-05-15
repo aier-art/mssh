@@ -1,4 +1,9 @@
 {
   "type": "module",
-  "dependencies": { "@w5/read": "^0.0.1", "ssh-config": "^4.2.1", "ssh2-promise": "^1.0.3" }
+  "dependencies": {
+    "@w5/read": "^0.0.1",
+    "@w5/utf8": "^0.0.3",
+    "ssh-config": "^4.2.1",
+    "ssh2": "^1.13.0"
+  }
 }

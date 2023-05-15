@@ -3,33 +3,73 @@
 > ./vpsli
   ssh2-promise:Ssh
   os > homedir
+  @w5/utf8/utf8d.js
   path > join
   ssh-config:Config
+  ssh2 > Client
   @w5/read
 
-CONFIG = Config.parse read join homedir(),'.ssh/config'
+HOME = homedir()
+CONFIG = Config.parse read join HOME,'.ssh/config'
 
-
-
-conn = (host, sh)=>
+ssh = (host, sh)=>
   conf = CONFIG.compute host
+  pkfp = conf.IdentityFile[0]
+  if pkfp.startsWith('~/')
+    pkfp = HOME + pkfp.slice(1)
+
   conf = {
     host: conf.HostName
     port: conf.Port || 22
     username: conf.User
-    privateKey:read conf.IdentityFile[0]
+    privateKey:read pkfp
   }
-  ssh = new Ssh conf
-  ssh = await ssh.connect()
-  try
-    r = await ssh.exec(sh)
-  catch err
-    console.error '❌ HOST', host, '>', sh
-    throw err
-  finally
-    await ssh.close()
-  console.log host + '>\n'+r
-  return
+  conn = new Client()
+  new Promise (resolve,reject)=>
+    conn.on(
+      'ready'
+      =>
+        conn.exec(
+          sh
+          (err,stream)=>
+            if err
+              console.error '❌', host, err
+              conn.end()
+            else
 
+              log = (data)=>
+                console.log host,'>',utf8d(data).trim()
+                return
 
-await conn 'tz', '~/wac.tax/pkg/bot/civitai/update.sh'
+              stream.on(
+                'data'
+                log
+              ).on(
+                'close'
+                (code)=>
+                  if code != 0
+                    console.log '❌', host, sh, '→ CODE', code
+                  conn.end()
+                  resolve()
+                  return
+              ).stderr.on(
+                'data'
+                log
+              )
+            return
+        )
+        return
+    ).on(
+      'error'
+      reject
+    ).connect conf
+    return
+
+run = (sh)=>
+  li = []
+  for host from vpsli
+    li.push ssh host,sh
+  Promise.allSettled li
+
+await run 'source ~/.bash_aliases && ~/wac.tax/pkg/bot/civitai/update.sh'
+process.exit()
