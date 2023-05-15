@@ -48,7 +48,9 @@ ssh = (host, sh)=>
                 'close'
                 (code)=>
                   if code != 0
-                    console.log '❌', host, sh, '→ CODE', code
+                    console.eror '❌', host, sh, '→ CODE', code
+                  else
+                    console.log '✅', host
                   conn.end()
                   resolve()
                   return
