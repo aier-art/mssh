@@ -48,7 +48,7 @@ ssh = (host, sh)=>
                 'close'
                 (code)=>
                   if code != 0
-                    console.eror '❌', host, sh, '→ CODE', code
+                    console.error '❌', host, sh, '→ CODE', code
                   else
                     console.log '✅', host
                   conn.end()
@@ -73,5 +73,6 @@ run = (sh)=>
     li.push ssh host,sh
   Promise.allSettled li
 
-await run 'source ~/.bash_aliases && ~/wac.tax/pkg/bot/civitai/update.sh'
+await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git pull && ./init.sh'
+#await run 'source ~/.bash_aliases && ~/wac.tax/pkg/bot/civitai/update.sh'
 process.exit()
