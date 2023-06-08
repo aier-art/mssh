@@ -14,7 +14,10 @@ CONFIG = Config.parse read join HOME,'.ssh/config'
 
 ssh = (host, sh)=>
   conf = CONFIG.compute host
-  pkfp = conf.IdentityFile[0]
+  {IdentityFile} = conf
+  if not IdentityFile
+    return
+  pkfp = IdentityFile[0]
   if pkfp.startsWith('~/')
     pkfp = HOME + pkfp.slice(1)
 

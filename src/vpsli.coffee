@@ -3,7 +3,7 @@
 < [
   'mi'
   'taws'
-  'sea'
+  # 'sea'
   'tz'
   'tuc'
 ]
