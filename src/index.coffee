@@ -77,5 +77,6 @@ run = (sh)=>
   Promise.allSettled li
 
 # await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git pull && ./init.sh'
-await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git pull && ./update.sh'
+await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/adult && git pull && ./update.sh'
+#await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git pull && ./update.sh'
 process.exit()
