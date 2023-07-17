@@ -78,5 +78,5 @@ run = (sh)=>
 
 # await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git fetch --all && git reset --hard origin/main && ./init.sh'
 await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/civitai && git fetch --all && git reset --hard origin/main && ./update.sh'
-await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/adult && git fetch --all && git reset --hard origin/main && ./update.sh'
+#await run 'source ~/.bash_aliases && cd ~/wac.tax/pkg/bot/adult && git fetch --all && git reset --hard origin/main && ./update.sh'
 process.exit()
