@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-VPS_LI="u1 u2 u3 uc sea mi m15"
+VPS_LI="u3 sea mi u1 u2 uc m15"
 
 DIR=$(realpath $0) && DIR=${DIR%/*}
 cd $DIR
