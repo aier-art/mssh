@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
+source /etc/profile
 set -ex
-
 cd ~/art/clip-runtime
 gitsync
 direnv allow
