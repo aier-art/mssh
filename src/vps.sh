@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]; then
+  echo "Usage: $0 xxx.sh"
+  exit 1
+fi
+
 VPS_LI="u1 u2 u3 uc sea mi m15"
 
 DIR=$(realpath $0) && DIR=${DIR%/*}
