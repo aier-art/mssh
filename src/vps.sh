@@ -6,12 +6,12 @@ DIR=$(realpath $0) && DIR=${DIR%/*}
 cd $DIR
 set -ex
 
-rfp=/tmp/run.sh
+rfp=/tmp/$1
 
 for vps in $VPS_LI; do
   echo $vps
 
-  rsync -avz $DIR/run.sh $vps:$rfp
+  rsync -avz $1 $vps:$rfp
   ssh $vps <<EOF
     $rfp && rm -rf $rfp
 EOF
