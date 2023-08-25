@@ -13,8 +13,7 @@ for vps in $VPS_LI; do
 
   rsync -avz $DIR/run.sh $vps:$rfp
   ssh $vps <<EOF
-    $rfp
-    rm -rf $rfp
+    $rfp && rm -rf $rfp
 EOF
 
 done
