@@ -11,8 +11,8 @@ DIR=$(realpath $0) && DIR=${DIR%/*}
 cd $DIR
 set -ex
 
+chmod +x $1
 rfp=/tmp/$1
-
 for vps in $VPS_LI; do
   echo $vps
 
