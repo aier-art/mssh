@@ -11,4 +11,4 @@ cd clip_pipe
 pnpm i
 bunx cep -c src -o lib
 supervisorctl start xxai-clip || true
-sudo killall -9 node
+sudo killall -9 node || true
