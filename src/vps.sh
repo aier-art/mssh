@@ -14,7 +14,7 @@ set -ex
 chmod +x $1
 rfp=/tmp/$1
 for vps in $VPS_LI; do
-  echo $vps
+  echo -e "\033[32m→ $vps\033[0m"
 
   rsync -avz $1 $vps:$rfp
   ssh $vps <<EOF
