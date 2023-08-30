@@ -17,15 +17,20 @@ await do =>
   li = await Promise.allSettled ing
   success = 0
   failed = 0
-  for {value},pos in  li
-    {exitCode} = value
-    if exitCode != 0
-      ++ failed
-      console.log vpsli[pos], 'exitCode', exitCode
-      console.log value.stdout
-      console.log value.stderr
+  for r,pos in  li
+    {value} = r
+    if value
+      {exitCode} = value
+      if exitCode != 0
+        ++ failed
+        console.log vpsli[pos], 'exitCode', exitCode
+        console.log value.stdout
+        console.log value.stderr
+      else
+        ++ success
     else
-      ++ success
+      ++ failed
+      console.log vpsli[pos], r
   console.log "success #{success} failed #{failed}"
   return
 
