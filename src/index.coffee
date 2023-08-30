@@ -18,7 +18,7 @@ await do =>
   success = 0
   failed = 0
   for {value},pos in  li
-    exitCode = {value}
+    {exitCode} = value
     if exitCode != 0
       ++ failed
       console.log vpsli[pos], 'exitCode', exitCode
