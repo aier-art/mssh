@@ -1,10 +1,3 @@
 #!/usr/bin/env coffee
 
-< [
-  'mi'
-  'taws'
-  'm15'
-  'tuc'
-  # 'sea'
-  # 'tz'
-]
+export default 'mi u3 sea u1 u2 uc m15'.split(' ')
