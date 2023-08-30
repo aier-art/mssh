@@ -1,11 +1,14 @@
 #!/usr/bin/env coffee
 
-> ./vpsli
+> ./VPSLI
   zx/globals:
 
 {argv} = process
 
 sh = argv[2]
+
+vpsli = argv[3].split(' ') or VPSLI
+
 await do =>
   if not sh
     console.log 'miss ./xxx.sh'
