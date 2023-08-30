@@ -7,7 +7,7 @@
 
 sh = argv[2]
 
-vpsli = argv[3].split(' ') or VPSLI
+vpsli = argv[3]?.split(' ') or VPSLI
 
 await do =>
   if not sh
