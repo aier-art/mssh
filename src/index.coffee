@@ -23,14 +23,15 @@ await do =>
       {exitCode} = value
       if exitCode != 0
         ++ failed
-        console.log vpsli[pos], 'exitCode', exitCode
-        console.log value.stdout
-        console.log value.stderr
+        console.error '⇨', vpsli[pos], 'exitCode', exitCode
+        console.error value.stdout
+        console.error value.stderr
       else
         ++ success
     else
       ++ failed
-      console.log vpsli[pos], r
+      console.error '⇨', vpsli[pos]
+      console.error r.reason
   console.log "success #{success} failed #{failed}"
   return
 
