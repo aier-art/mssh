@@ -15,12 +15,18 @@ await do =>
   for vps from vpsli
     ing.push $"./vps.sh #{vps} #{sh}"
   li = await Promise.allSettled ing
+  success = 0
+  failed = 0
   for {value},pos in  li
     exitCode = {value}
     if exitCode != 0
+      ++ failed
       console.log vpsli[pos], 'exitCode', exitCode
       console.log value.stdout
       console.log value.stderr
+    else
+      ++ success
+  console.log "success #{success} failed #{failed}"
   return
 
 #   ssh2-promise:Ssh
