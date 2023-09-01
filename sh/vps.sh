@@ -9,8 +9,6 @@ fi
 vps=$1
 sh=$2
 
-DIR=$(realpath $0) && DIR=${DIR%/*}
-cd $DIR
 set -ex
 
 chmod +x $sh

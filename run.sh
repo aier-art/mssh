@@ -6,8 +6,4 @@ set -ex
 
 ./build.sh
 
-if [ ! -n "$1" ]; then
-  exec ./lib/index.js
-else
-  exec ./${@:1}
-fi
+exec ./lib/index.js $1
