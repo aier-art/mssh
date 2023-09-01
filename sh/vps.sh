@@ -12,7 +12,7 @@ sh=$2
 set -ex
 
 chmod +x $sh
-rfp=/tmp/$sh
+rfp=/tmp/mssh.$(basename $sh)
 # for vps in $VPS_LI; do
 echo -e "\033[32m→ $vps\033[0m"
 
