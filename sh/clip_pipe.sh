@@ -9,8 +9,7 @@ gitsync
 
 clip=~/art/clip-runtime
 cd $clip
-#git fetch --all && git reset --hard origin/main
-gitsync
+git pull
 direnv allow
 cd $clip/rust/clip_img2qdrant
 ./dist.sh
