@@ -17,7 +17,6 @@ await do =>
   ing = []
   for vps from vpsli
     p = $"./sh/vps.sh #{vps} #{sh}"
-    await p
     ing.push p
   li = await Promise.allSettled ing
   success = 0
