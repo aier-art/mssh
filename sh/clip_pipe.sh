@@ -9,7 +9,7 @@ gitsync() {
 
   branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' | awk -F' ' '{print $2}')
 
-  git add --update :/ && git commit -m "$msg"
+  git add --update :/ && git commit -m "$msg" || true
 
   git pull origin $branch
 
@@ -22,7 +22,7 @@ gitsync() {
   git push --recurse-submodules=on-demand --tag --set-upstream origin $branch
 }
 
-rustup update
+#rustup update
 
 cd ~/art/conf
 gitsync
