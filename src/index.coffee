@@ -2,7 +2,8 @@
 
 > ./VPSLI
   zx/globals:
-
+  chalk
+{redBright,green} = chalk
 {argv} = process
 
 sh = argv[2]
@@ -33,7 +34,9 @@ await do =>
     else
       ++ failed
       console.error '⇨', vpsli[pos]
-      console.error r.reason
+      {reason } = r
+      console.error green reason.stdout
+      console.error redBright reason.stderr
   console.log "success #{success} failed #{failed}"
   return
 

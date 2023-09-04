@@ -3,10 +3,11 @@
 source /etc/profile
 set -ex
 nc -z -w 1 127.0.0.1 7890 && export https_proxy=http://127.0.0.1:7890
-rustup update
-cd ~/art/conf
-gitsync
 
+rustup update
+
+cd ~/art/conf
+git pull
 clip=~/art/clip-runtime
 cd $clip
 git pull
