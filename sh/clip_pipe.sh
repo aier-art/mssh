@@ -18,4 +18,4 @@ cd $clip/clip_pipe
 pnpm i
 bunx cep -c src -o lib
 supervisorctl start xxai-clip || true
-sudo killall -9 node || true
+sudo pkill -9 -f "node.*clip-pipe" || true
