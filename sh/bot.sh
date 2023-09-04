@@ -35,7 +35,7 @@ gitsync
 #git fetch --all && git reset --hard origin/main
 
 direnv allow
-ni
+pnpm i
 
 ic() {
   cd $BOT/$1
