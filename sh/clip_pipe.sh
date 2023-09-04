@@ -4,13 +4,31 @@ source /etc/profile
 set -ex
 nc -z -w 1 127.0.0.1 7890 && export https_proxy=http://127.0.0.1:7890
 
+gitsync() {
+  msg='♨'
+
+  branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' | awk -F' ' '{print $2}')
+
+  git add --update :/ && git commit -m "$msg"
+
+  git pull origin $branch
+
+  branch=$(git branch | awk '{print $2}')
+
+  git pull origin $branch
+
+  git merge $branch
+
+  git push --recurse-submodules=on-demand --tag --set-upstream origin $branch
+}
+
 rustup update
 
 cd ~/art/conf
-git pull
+gitsync
 clip=~/art/clip-runtime
 cd $clip
-git pull
+gitsync
 direnv allow
 cd $clip/rust/clip_img2qdrant
 ./dist.sh
