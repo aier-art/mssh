@@ -16,7 +16,9 @@ await do =>
   console.log sh
   ing = []
   for vps from vpsli
-    ing.push $"./sh/vps.sh #{vps} #{sh}"
+    p = $"./sh/vps.sh #{vps} #{sh}"
+    await p
+    ing.push p
   li = await Promise.allSettled ing
   success = 0
   failed = 0
