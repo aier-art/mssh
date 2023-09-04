@@ -22,7 +22,7 @@ rsync -avz $sh $vps:$rfp
 
 echo $prefix
 ssh $vps <<EOF
-export PS4='$prefix' && $rfp && rm -rf $rfp
+export PS4='$prefix' && bash $rfp && rm -rf $rfp
 EOF
 
 # done
