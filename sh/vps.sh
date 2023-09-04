@@ -12,11 +12,12 @@ sh=$2
 set -ex
 
 chmod +x $sh
-rfp=/tmp/mssh.$(basename $sh)
+rfp=/tmp/mssh/$(basename $sh)
 # for vps in $VPS_LI; do
 
 prefix="\033[32m$vps \$(basename \${BASH_SOURCE[0]}) \$(echo \"+\$LINENO\") ❯ \033[0m"
 
+ssh $vps "mkdir -p $(dirname $rfp)"
 rsync -avz $sh $vps:$rfp
 
 echo $prefix
