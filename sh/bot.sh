@@ -39,7 +39,7 @@ ni
 
 ic() {
   cd $BOT/$1
-  ni
+  pnpm i
   bunx cep -c src -o lib
 }
 
