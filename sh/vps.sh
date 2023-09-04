@@ -14,11 +14,13 @@ set -ex
 chmod +x $sh
 rfp=/tmp/mssh.$(basename $sh)
 # for vps in $VPS_LI; do
-echo -e "\033[32m→ $vps\033[0m"
+
+prefix="\033[32m $vps ❯ \033[0m"
 
 rsync -avz $sh $vps:$rfp
+
 ssh $vps <<EOF
-    $rfp && rm -rf $rfp
+export PS4='$prefix' && $rfp && rm -rf $rfp
 EOF
 
 # done
