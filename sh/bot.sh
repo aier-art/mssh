@@ -28,4 +28,4 @@ ic() {
 ic adult
 ic civitai
 
-sudo pkill -9 -f "node.*civitai" || true
+sudo pkill -9 -f "node .*civitai" || true
