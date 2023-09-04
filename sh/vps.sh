@@ -15,14 +15,14 @@ chmod +x $sh
 rfp=/tmp/mssh/$(basename $sh)
 # for vps in $VPS_LI; do
 
-prefix="\033[32m$vps \$(basename \${BASH_SOURCE[0]}) \$(echo \"+\$LINENO\") ❯ \033[0m"
+prefix="\033[32m $vps \$(basename \${BASH_SOURCE[0]}) \$(echo \"+\$LINENO\") ❯ \033[0m"
 
 ssh $vps "mkdir -p $(dirname $rfp)"
 rsync -avz $sh $vps:$rfp
 
 echo $prefix
 ssh $vps <<EOF
-export PS4='$prefix' && bash $rfp && rm -rf $rfp
+PS4='$prefix' $rfp && rm -rf $rfp
 EOF
 
 # done
